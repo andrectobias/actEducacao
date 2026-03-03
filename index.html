@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>actEducação - Sistema de Gestão Escolar</title>
+    <link rel="icon" href="icon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <link
+      rel="icon"
+      href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzExMTgyNyI+PHBhdGggZD0iTTUgOC41bDcuNS0zLjVMMjAgOC41IDEyLjUgMTIgNSA4LjV6TTI0IDEwLjJ2NC44MWwtMi0uOTF2LTMuNjNsLTIgLjkyYy41NS4yNSAxIC42MSAxLjQyIDEuMDZsLTYuOTIgMy4xN2MtLjQyLjE5LS45Mi4xOS0xLjM0IDBMMiA5LjFsOC41IDMuOTFMMTIgMTFsNi41LTMuMDEgMİA2LjdWMTZsLTIuNzUtMS4yNy0xLjI1LjU2djEuNzVsNC0xLjgxVjEwLjJ6Ii8+PC9zdmc+"
+    />
+  </head>
+
+  <body data-theme="light-default">
+    <div class="flex h-screen overflow-hidden">
+      <div class="sidebar w-64 h-full flex flex-col">
+        <div class="p-4 flex items-center border-b border-gray-200">
+          <div class="text-2xl font-bold text-[var(--theme-color)]">
+            act<span class="text-gray-700 dark:text-gray-300">Educação</span>
+          </div>
+        </div>
+
+        <div class="p-4 flex-grow overflow-y-auto">
+          <div
+            class="sidebar-item active p-3 flex items-center"
+            data-page="dashboard"
+          >
+            <i class="fas fa-calendar-alt mr-3"></i><span>Agenda</span>
+          </div>
+          <div class="sidebar-item p-3 flex items-center" data-page="releases">
+            <i class="fas fa-rocket mr-3"></i><span>Lançamentos</span>
+          </div>
+          <div class="sidebar-item p-3 flex items-center" data-page="diary">
+            <i class="fas fa-book-reader mr-3"></i><span>Diário de Classe</span>
+          </div>
+          <div
+            class="sidebar-item p-3 flex items-center"
+            data-page="organization"
+          >
+            <i class="fas fa-briefcase mr-3"></i><span>Organização</span>
+          </div>
+          <div
+            class="sidebar-item p-3 flex items-center"
+            data-page="schedule-grid"
+          >
+            <i class="fas fa-th-large mr-3"></i><span>Grade Horária</span>
+          </div>
+          <div class="sidebar-item p-3 flex items-center" data-page="classes">
+            <i class="fas fa-users mr-3"></i><span>Turmas</span>
+          </div>
+          <div
+            class="sidebar-item p-3 flex items-center"
+            data-page="school-data"
+          >
+            <i class="fas fa-university mr-3"></i><span>Dados da Escola</span>
+          </div>
+          <div class="sidebar-item p-3 flex items-center" data-page="reports">
+            <i class="fas fa-file-pdf mr-3"></i><span>Relatórios</span>
+          </div>
+        </div>
+
+        <div class="p-4 border-t border-gray-200">
+          <div class="flex items-center justify-between">
+            <button
+              id="theme-btn"
+              class="p-2 rounded-full"
+              title="Mudar Aparência"
+            >
+              <i class="fas fa-palette"></i>
+            </button>
+            <button
+              id="settings-btn"
+              class="p-2 rounded-full"
+              title="Configurações"
+            >
+              <i class="fas fa-cog"></i>
+            </button>
+            <button
+              id="backup-btn"
+              class="p-2 rounded-full"
+              title="Backup e Restauração"
+            >
+              <i class="fas fa-download"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-1 flex flex-col overflow-hidden">
+        <main class="flex-1 overflow-y-auto p-6"></main>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.6.0/tinycolor.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+    <script src="script.js"></script>
+  </body>
+</html>

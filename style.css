@@ -1,0 +1,1325 @@
+/* Importação do Tailwind CSS via CDN */
+@import url('https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css');
+
+/* Definição das variáveis de cor (tema) */
+/* Definição das variáveis de cor (tema) */
+:root,
+[data-theme="light-default"] {
+    --theme-color: #4CAF50;
+    --theme-color-dark: #388E3C;
+    --theme-color-light: #C8E6C9;
+    --theme-color-hover-dark: rgba(76, 175, 80, 0.2);
+
+    /* Variáveis de Fundo */
+    --bg-primary: #f4f5f7;
+    --bg-secondary: #ffffff;
+    --text-primary: #111827;
+    --text-secondary: #6b7280;
+    --border-color: #e5e7eb;
+
+    /* ALTERADO: Cor mais escura para linhas alternadas (zebra striping) - Aumentado opacidade para 0.15 */
+    --stripe-color: rgba(0, 0, 0, 0.15);
+
+    --non-school-day-color: #f3f4f6;
+    --disabled-cell-bg: #e5e7eb;
+    --disabled-cell-text: #9ca3af;
+}
+
+[data-theme="light-sepia"] {
+    --bg-primary: #fbf8f2;
+    --bg-secondary: #f3f0e9;
+    --text-primary: #433d37;
+    --text-secondary: #7d736a;
+    --border-color: #dcd6c9;
+    --stripe-color: rgba(125, 115, 106, 0.05);
+}
+
+[data-theme="light-mint"] {
+    --bg-primary: #f0fdf4;
+    --bg-secondary: #ffffff;
+    --text-primary: #14532d;
+    --text-secondary: #4d7c5d;
+    --border-color: #bbf7d0;
+    --stripe-color: rgba(20, 83, 45, 0.03);
+}
+
+[data-theme="dark-default"] {
+    --bg-primary: #111827;
+    --bg-secondary: #1f2937;
+    --text-primary: #f3f4f6;
+    --text-secondary: #9ca3af;
+    --border-color: #374151;
+    --stripe-color: rgba(255, 255, 255, 0.05);
+    --non-school-day-color: #374151;
+    --disabled-cell-bg: #4b5563;
+    --disabled-cell-text: #6b7280;
+}
+
+[data-theme="dark-charcoal"] {
+    --bg-primary: #1c1c1c;
+    --bg-secondary: #262626;
+    --text-primary: #ededed;
+    --text-secondary: #a3a3a3;
+    --border-color: #404040;
+    --stripe-color: rgba(255, 255, 255, 0.04);
+}
+
+[data-theme="dark-blue"] {
+    --bg-primary: #0d1117;
+    --bg-secondary: #161b22;
+    --text-primary: #c9d1d9;
+    --text-secondary: #8b949e;
+    --border-color: #30363d;
+    --stripe-color: rgba(139, 148, 158, 0.07);
+}
+
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+header,
+.sidebar {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color);
+}
+
+.sidebar .border-b,
+.sidebar .border-t {
+    border-color: var(--border-color);
+}
+
+.card {
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.02);
+    border: 1px solid var(--border-color);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    cursor: default;
+}
+
+.card:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme*="dark-"] .card:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.15), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-grid .card:hover,
+.class-card.card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme*="dark-"] .dashboard-grid .card:hover,
+[data-theme*="dark-"] .class-card.card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
+}
+
+.dashboard-grid .card {
+    cursor: pointer;
+}
+
+.class-card.card {
+    cursor: default;
+}
+
+.class-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 120px;
+    padding: 1rem;
+}
+
+.dashboard-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dashboard-list-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 0.25rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.dashboard-list-item:last-child {
+    border-bottom: none;
+}
+
+.dashboard-list-item .date {
+    flex-shrink: 0;
+    text-align: center;
+    font-weight: 600;
+    width: 50px;
+}
+
+.dashboard-list-item .date span {
+    display: block;
+    line-height: 1.2;
+}
+
+.dashboard-list-item .date .day {
+    font-size: 1.25rem;
+    color: var(--theme-color);
+}
+
+.dashboard-list-item .date .month {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.dashboard-list-item .details {
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-list-item .details .description {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.dashboard-list-item .details .sub-description {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background-color: var(--theme-color);
+    color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background-color: var(--theme-color-dark);
+}
+
+.btn-subtle {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+.btn-subtle:hover:not(:disabled) {
+    background-color: var(--stripe-color);
+    border-color: var(--text-secondary);
+    color: var(--text-primary);
+}
+
+.btn-danger {
+    background-color: #ef4444;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #dc2626;
+}
+
+.swal2-actions {
+    gap: 0.75rem;
+}
+
+.sidebar-item {
+    border-radius: 8px;
+    margin: 4px 0;
+    transition: background-color 0.2s, color 0.2s;
+    cursor: pointer;
+    color: var(--text-secondary);
+}
+
+.sidebar-item:hover {
+    background-color: rgba(128, 128, 128, 0.1);
+}
+
+.sidebar-item.active {
+    background-color: var(--theme-color-light);
+    color: var(--theme-color-dark);
+    font-weight: 600;
+}
+
+.sidebar .border-t button {
+    color: var(--text-secondary);
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.sidebar .border-t button:hover {
+    background-color: var(--stripe-color);
+    color: var(--text-primary);
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+    width: 100%;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    padding: 10px 12px;
+}
+
+.form-textarea {
+    min-height: 80px;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+    outline: none;
+    border-color: var(--theme-color);
+    box-shadow: 0 0 0 3px var(--theme-color-light);
+}
+
+[data-theme*="dark-"] .form-input:focus,
+[data-theme*="dark-"] .form-textarea:focus,
+[data-theme*="dark-"] .form-select:focus {
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.3);
+}
+
+.form-checkbox,
+.form-radio {
+    color: var(--theme-color);
+    border-color: var(--border-color);
+}
+
+.form-checkbox:focus,
+.form-radio:focus {
+    box-shadow: none;
+    --tw-ring-color: var(--theme-color-light);
+}
+
+.swal2-popup {
+    background-color: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+    border-radius: 12px !important;
+    border: 1px solid var(--border-color);
+}
+
+.swal2-title {
+    color: var(--text-primary) !important;
+}
+
+.swal2-html-container {
+    color: var(--text-secondary) !important;
+}
+
+.swal-modern-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    text-align: left;
+    margin-top: 1rem;
+}
+
+.swal-modern-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.swal-modern-label {
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.swal-modern-input,
+.swal-modern-select,
+.swal-modern-textarea {
+    width: 100% !important;
+    margin: 0 !important;
+    background-color: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 6px !important;
+    padding: 10px 12px !important;
+    box-sizing: border-box;
+}
+
+.swal-modern-textarea {
+    min-height: 120px;
+}
+
+.swal-modern-input:focus,
+.swal-modern-select:focus,
+.swal-modern-textarea:focus {
+    border-color: var(--theme-color) !important;
+    box-shadow: 0 0 0 3px var(--theme-color-light) !important;
+}
+
+[data-theme*="dark-"] .swal-modern-input:focus,
+[data-theme*="dark-"] .swal-modern-select:focus,
+[data-theme*="dark-"] .swal-modern-textarea:focus {
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.3) !important;
+}
+
+.swal-modern-checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.swal-attendance-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    border: 1px solid var(--border-color);
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: var(--bg-primary);
+    font-weight: 600;
+}
+
+tbody tr {
+    transition: background-color 0.2s;
+}
+
+tbody tr.hidden-row {
+    display: none;
+}
+
+tbody tr:nth-child(even) {
+    background-color: var(--stripe-color);
+}
+
+tbody tr:hover {
+    background-color: var(--theme-color-light);
+}
+
+[data-theme*="dark-"] tbody tr:hover {
+    background-color: var(--theme-color-hover-dark);
+}
+
+tr.student-inactive {
+    opacity: 0.6;
+    background-color: var(--disabled-cell-bg) !important;
+    text-decoration: line-through;
+}
+
+tr.student-inactive:hover {
+    opacity: 0.7;
+    background-color: var(--disabled-cell-bg) !important;
+}
+
+.color-option {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid transparent;
+    box-shadow: 0 0 0 1px var(--border-color);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.color-option:hover {
+    transform: scale(1.2);
+}
+
+.color-option.selected {
+    border-color: var(--bg-secondary);
+    box-shadow: 0 0 0 2px var(--text-primary);
+}
+
+#filter-status-bar {
+    background-color: var(--theme-color-light);
+    color: var(--theme-color-dark);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+.attendance-table th,
+.attendance-table td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 2px;
+    min-width: 45px;
+}
+
+.attendance-table th.date-header {
+    cursor: pointer;
+    position: relative;
+}
+
+.attendance-table th.date-header:hover {
+    background-color: var(--theme-color-light);
+}
+
+[data-theme*="dark-"] .attendance-table th.date-header:hover {
+    background-color: var(--theme-color-hover-dark);
+}
+
+.attendance-table .filter-icon {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    margin-left: 4px;
+    cursor: pointer;
+}
+
+.attendance-table .filter-icon:hover {
+    color: var(--text-primary);
+}
+
+.attendance-table th.student-name,
+.attendance-table td.student-name {
+    text-align: left;
+    min-width: 200px;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 500;
+}
+
+.attendance-table th.freq-col,
+.attendance-table td.freq-col {
+    min-width: 80px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.attendance-table td.freq-warning {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.attendance-table td.freq-danger {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+[data-theme*="dark-"] .attendance-table td.freq-warning {
+    background-color: #78350f;
+    color: #fef3c7;
+}
+
+[data-theme*="dark-"] .attendance-table td.freq-danger {
+    background-color: #7f1d1d;
+    color: #fee2e2;
+}
+
+/* NOVA REGRA PARA NOTAS BAIXAS */
+/* REGRAS ATUALIZADAS PARA CORES DE NOTAS */
+
+/* Cor para notas baixas (perigo) */
+.grade-danger {
+    color: #ef4444 !important;
+    /* Vermelho */
+    font-weight: 700;
+}
+
+[data-theme*="dark-"] .grade-danger {
+    color: #f87171 !important;
+    /* Vermelho mais claro para contraste */
+}
+
+/* NOVA REGRA: Cor para notas altas (sucesso) */
+.grade-success {
+    color: #1d4ed8 !important;
+    /* Azul */
+    font-weight: 700;
+}
+
+[data-theme*="dark-"] .grade-success {
+    color: #60a5fa !important;
+    /* Azul mais claro para contraste */
+}
+
+/* Garante que os inputs também recebam as cores */
+.grade-input.grade-danger {
+    color: #ef4444 !important;
+}
+
+[data-theme*="dark-"] .grade-input.grade-danger {
+    color: #f87171 !important;
+}
+
+.grade-input.grade-success {
+    color: #1d4ed8 !important;
+}
+
+[data-theme*="dark-"] .grade-input.grade-success {
+    color: #60a5fa !important;
+}
+
+.grade-input.grade-danger {
+    color: #ef4444 !important;
+    font-weight: 700;
+}
+
+[data-theme*="dark-"] .grade-input.grade-danger {
+    color: #f87171 !important;
+}
+
+.attendance-table tfoot td {
+    font-weight: 700;
+}
+
+.attendance-table th:first-child,
+.attendance-table td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 10;
+    border-right-width: 2px;
+    background-color: var(--bg-secondary);
+}
+
+.attendance-table tr:hover td:first-child {
+    background-color: var(--theme-color-light);
+}
+
+[data-theme*="dark-"] .attendance-table tr:hover td:first-child {
+    background-color: var(--theme-color-hover-dark);
+}
+
+.attendance-table th.non-school-day {
+    background-color: var(--non-school-day-color);
+    cursor: not-allowed;
+}
+
+.attendance-cell {
+    width: 30px;
+    height: 30px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: auto;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.attendance-cell:hover {
+    transform: scale(1.1);
+}
+
+.attendance-cell[data-status="present"] {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.attendance-cell[data-status="absent"] {
+    background-color: #f44336;
+    color: white;
+}
+
+.attendance-cell[data-status="excused"] {
+    background-color: #2196F3;
+    color: white;
+}
+
+.attendance-cell[data-status="unset"] {
+    background-color: var(--bg-primary);
+    border: 1px dashed var(--border-color);
+}
+
+.attendance-cell.disabled {
+    background-color: var(--disabled-cell-bg);
+    color: var(--disabled-cell-text);
+    cursor: not-allowed;
+    transform: none;
+}
+
+.attendance-cell.disabled:hover {
+    transform: none;
+}
+
+.schedule-grid {
+    table-layout: fixed;
+}
+
+.schedule-grid th,
+.schedule-grid td {
+    text-align: center;
+    vertical-align: middle;
+    height: 80px;
+}
+
+.schedule-grid th:first-child,
+.schedule-grid td:first-child {
+    width: 120px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.schedule-cell {
+    cursor: pointer;
+    transition: background-color 0.2s, opacity 0.2s;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 4px;
+    line-height: 1.2;
+    border-radius: 4px;
+}
+
+.schedule-cell.empty:hover {
+    background-color: var(--theme-color-light);
+}
+
+.schedule-cell:hover {
+    opacity: 0.85;
+}
+
+.page-tab {
+    border-bottom: 3px solid transparent;
+    color: var(--text-secondary);
+    padding: 0.75rem 1rem;
+    margin-bottom: -2px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: color 0.2s, border-color 0.2s;
+    cursor: pointer;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.page-tab.active {
+    color: var(--theme-color);
+    border-bottom-color: var(--theme-color);
+}
+
+.dobradinha-badge {
+    display: inline-block;
+    background-color: var(--theme-color-light);
+    color: var(--theme-color-dark);
+    font-size: 0.7rem;
+    padding: 2px 5px;
+    border-radius: 8px;
+    font-weight: 700;
+    margin-left: 4px;
+    vertical-align: middle;
+}
+
+.status-badge {
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.status-ativo {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+.status-transferido {
+    background-color: #ffedd5;
+    color: #9a3412;
+}
+
+.status-remanejado {
+    background-color: #dbeafe;
+    color: #1e40af;
+}
+
+[data-theme*="dark-"] .status-ativo {
+    background-color: #14532d;
+    color: #bbf7d0;
+}
+
+[data-theme*="dark-"] .status-transferido {
+    background-color: #7c2d12;
+    color: #fed7aa;
+}
+
+[data-theme*="dark-"] .status-remanejado {
+    background-color: #1e3a8a;
+    color: #bfdbfe;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 10px;
+    border: 2px solid var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-color) var(--bg-primary);
+}
+
+.tasks-view-switcher {
+    background-color: var(--stripe-color);
+    border-radius: 8px;
+    padding: 4px;
+    display: inline-flex;
+}
+
+.tasks-view-btn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    background-color: transparent;
+    color: var(--text-secondary);
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.tasks-view-btn.active {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.kanban-board {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.kanban-column {
+    background-color: var(--bg-primary);
+    border-radius: 8px;
+    padding: 1rem;
+    min-height: 200px;
+}
+
+.kanban-column-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.kanban-cards {
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.kanban-card {
+    background-color: var(--bg-secondary);
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    padding: 0.75rem 1rem;
+    cursor: grab;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.kanban-card:active {
+    cursor: grabbing;
+}
+
+.kanban-card.dragging {
+    opacity: 0.5;
+    transform: rotate(3deg);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.kanban-card-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.priority-badge {
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.priority-baixa {
+    background-color: #dbeafe;
+    color: #1e40af;
+}
+
+.priority-media {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.priority-alta {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+[data-theme*="dark-"] .priority-baixa {
+    background-color: #1e3a8a;
+    color: #bfdbfe;
+}
+
+[data-theme*="dark-"] .priority-media {
+    background-color: #78350f;
+    color: #fef3c7;
+}
+
+[data-theme*="dark-"] .priority-alta {
+    background-color: #7f1d1d;
+    color: #fee2e2;
+}
+
+.tag-badge {
+    background-color: var(--stripe-color);
+    color: var(--text-secondary);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.task-due-date {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s;
+}
+
+.todo-item:last-child {
+    border-bottom: none;
+}
+
+.todo-item:hover {
+    background-color: var(--stripe-color);
+}
+
+.todo-item.completed .todo-title {
+    text-decoration: line-through;
+    color: var(--text-secondary);
+}
+
+.todo-item input[type="checkbox"] {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+.todo-item .todo-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.todo-item .todo-tags {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+}
+
+.theme-option {
+    cursor: pointer;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    transition: all 0.2s;
+}
+
+.theme-option.selected {
+    border-color: var(--theme-color);
+    box-shadow: 0 0 0 3px var(--theme-color-light);
+}
+
+[data-theme*="dark-"] .theme-option.selected {
+    box-shadow: 0 0 0 3px var(--theme-color-hover-dark);
+}
+
+.theme-preview {
+    width: 100%;
+    height: 40px;
+    border-radius: 4px;
+    display: flex;
+    overflow: hidden;
+}
+
+.theme-preview-main {
+    width: 70%;
+}
+
+.theme-preview-side {
+    width: 30%;
+}
+
+[data-theme*="dark-"] .ql-toolbar {
+    background: var(--bg-primary);
+    border-color: var(--border-color) !important;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+[data-theme*="dark-"] .ql-container {
+    border-color: var(--border-color) !important;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+[data-theme*="dark-"] .ql-editor {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+[data-theme*="dark-"] .ql-snow .ql-stroke {
+    stroke: var(--text-secondary);
+}
+
+[data-theme*="dark-"] .ql-snow .ql-picker-label {
+    color: var(--text-secondary) !important;
+}
+
+[data-theme*="dark-"] .ql-snow .ql-picker-options {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color) !important;
+}
+
+[data-theme*="dark-"] .ql-snow .ql-picker-item:hover {
+    color: var(--theme-color);
+}
+
+[data-theme*="dark-"] .ql-editor.ql-blank::before {
+    color: var(--text-secondary);
+    opacity: 0.6;
+}
+
+.status-badge {
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.status-ativo {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+/* NOVAS CLASSES ADICIONADAS ABAIXO */
+.status-lancado {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+.status-pendente {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+/* FIM DAS NOVAS CLASSES */
+
+.status-transferido {
+    background-color: #ffedd5;
+    color: #9a3412;
+}
+
+.status-remanejado {
+    background-color: #dbeafe;
+    color: #1e40af;
+}
+
+[data-theme*="dark-"] .status-ativo {
+    background-color: #14532d;
+    color: #bbf7d0;
+}
+
+/* NOVAS CLASSES (TEMA ESCURO) ADICIONADAS ABAIXO */
+[data-theme*="dark-"] .status-lancado {
+    background-color: #14532d;
+    color: #bbf7d0;
+}
+
+[data-theme*="dark-"] .status-pendente {
+    background-color: #7f1d1d;
+    color: #fee2e2;
+}
+
+/* FIM DAS NOVAS CLASSES (TEMA ESCURO) */
+
+
+[data-theme*="dark-"] .status-transferido {
+    background-color: #7c2d12;
+    color: #fed7aa;
+}
+
+[data-theme*="dark-"] .status-remanejado {
+    background-color: #1e3a8a;
+    color: #bfdbfe;
+}
+
+/* =============================================== */
+/* NOVAS CLASSES PARA O CALENDÁRIO/DASHBOARD       */
+/* =============================================== */
+
+/* --- Carrossel da Semana --- */
+.week-carousel {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-color) transparent;
+}
+
+.week-carousel::-webkit-scrollbar {
+    height: 8px;
+}
+
+.week-carousel::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.week-carousel::-webkit-scrollbar-thumb {
+    background-color: var(--border-color);
+    border-radius: 10px;
+    border: 3px solid var(--bg-primary);
+}
+
+.week-carousel::-webkit-scrollbar-thumb:hover {
+    background-color: var(--text-secondary);
+}
+
+/* --- Calendário Mensal --- */
+.calendar-grid {
+    border-collapse: collapse;
+    table-layout: fixed;
+    /* Garante colunas de largura igual */
+    height: calc(100vh - 300px);
+    /* Ocupa a maior parte da tela */
+    min-height: 500px;
+}
+
+.calendar-header th {
+    padding-bottom: 0.75rem;
+    font-weight: 600;
+    text-align: center;
+    color: var(--text-secondary);
+    border-bottom: 2px solid var(--border-color);
+}
+
+.calendar-day {
+    border: 1px solid var(--border-color);
+    vertical-align: top;
+    padding: 0.5rem;
+    transition: background-color 0.2s;
+}
+
+.calendar-day:not(:empty):hover {
+    background-color: var(--bg-primary);
+}
+
+.calendar-day.is-today {
+    background-color: var(--theme-color-light);
+    border: 2px solid var(--theme-color);
+}
+
+.calendar-day.is-today .day-number {
+    font-weight: 700;
+    color: var(--theme-color-dark);
+}
+
+.day-number {
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    text-align: right;
+}
+
+/* Localize esta regra no seu CSS */
+.calendar-event {
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-left: 4px solid;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    cursor: pointer;
+    /* <-- ADICIONE ESTA LINHA */
+    transition: all 0.2s ease-out;
+    /* <-- ADICIONE ESTA LINHA */
+}
+
+/* ADICIONE ESTA NOVA REGRA ABAIXO DA ANTERIOR */
+.calendar-event:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* ADICIONE TAMBÉM ESTA REGRA PARA O TEMA ESCURO */
+[data-theme*="dark-"] .calendar-event:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Cor específica para eventos escolares */
+.calendar-event.event-school {
+    background-color: #fff8e1;
+}
+
+[data-theme*="dark-"] .calendar-event.event-school {
+    background-color: #493816;
+}
+
+/* Cor específica para atividades */
+.calendar-event.event-homework {
+    background-color: var(--stripe-color);
+}
+
+/* =============================================== */
+/* ESTILOS ADICIONAIS PARA CALENDÁRIO E MODAL      */
+/* =============================================== */
+
+/* Permite que a tag <strong> dentro do evento do calendário funcione */
+.calendar-event strong {
+    font-weight: 700;
+}
+
+/* Adiciona uma borda colorida e espaçamento dentro do modal do evento */
+.swal-modal-details {
+    border-left: 5px solid var(--border-color);
+    padding-left: 1.25rem;
+}
+
+/* Estiliza o campo de descrição da atividade dentro do modal para melhor leitura */
+.swal-event-description {
+    font-size: 1rem;
+    /* 16px */
+    color: var(--text-primary);
+    white-space: pre-wrap;
+    background-color: var(--stripe-color);
+    padding: 0.75rem;
+    border-radius: 6px;
+    margin-top: 4px;
+}
+
+/* =============================================== */
+/* NOVAS CLASSES PARA O CARROSSEL DA SEMANA        */
+/* =============================================== */
+
+.week-carousel-wrapper {
+    position: relative;
+    /* Contêiner para posicionar as setas */
+    margin: 0 -1.5rem;
+    /* Compensa o padding do contêiner pai para as setas ficarem nas bordas */
+    padding: 0 1.5rem;
+}
+
+.week-carousel {
+    scroll-behavior: smooth;
+    /* Essencial para a rolagem suave com JS */
+    /* Remove a barra de rolagem visualmente */
+    scrollbar-width: none;
+    /* Para Firefox */
+}
+
+.week-carousel::-webkit-scrollbar {
+    display: none;
+    /* Para Chrome, Safari, e Edge */
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 2.5rem;
+    /* 40px */
+    height: 2.5rem;
+    /* 40px */
+    border-radius: 9999px;
+    /* Circular */
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    display: none;
+    /* Começa escondido, o JavaScript controla a visibilidade */
+}
+
+.carousel-arrow:hover:not(:disabled) {
+    background-color: var(--bg-primary);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-arrow:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+#carousel-prev {
+    left: 0.5rem;
+    /* Espaçamento da borda */
+}
+
+#carousel-next {
+    right: 0.5rem;
+    /* Espaçamento da borda */
+}
